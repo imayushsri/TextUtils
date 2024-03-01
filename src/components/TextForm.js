@@ -5,64 +5,130 @@ export default function TextForm(props) {
         // console.log("On Change");
         setText(event.target.value);
     }
+    // upper case
     const handleUpClick = () =>{
         // console.log("UpperCase was clicked "+text);
         let newText = text.toUpperCase();
         setText(newText);
     }
+
+    // lower case
     const handleLowClick = () =>{
         let newText = text.toLowerCase();
         setText(newText);
     }
+
+    // clear
     const handleClearClick = () =>{
         setText("");
     }
-    const handleLocLowClick = () =>{
-        let newText = text.toString();
-        setText(newText);
+
+    // copy text
+    const handleCopy = () =>{
+        let newText = document.getElementById("myBox");
+        newText.select();
+        navigator.clipboard.writeText(newText.value)
+        alert("Text Copied")
     }
-  // Dark Mode
-    const [mode, setMode] = useState({
-        color : 'black',
-        backgroundColor : 'white'
-      })
-      const [btnText, setBtnText] = useState('Enable Dark Mode')
-      const toggleStyle = () =>{
-          if(mode.color === 'white'){
-            setMode({
-              color : 'black',
-              backgroundColor : 'white'
-            });
-            setBtnText("Enable Dark Mode");
-          }
-            else{
-              setMode({
-                color : 'white',
-                backgroundColor : '#000000de'
-              });
-              setBtnText("Diable Dark Mode")
+
+    // remove extra spaces
+    const handleSpaces = () => {
+        let newText = text.split(/[ ]+/);
+        setText(newText.join(" "))
+    }
+      
+    // convert first letter in upper case of sentences
+    const handleFirstLetter = () =>{
+        let newText = text.split(". ");
+        for(let i = 0; i < newText.length; i++){
+            if(newText[i].length > 1){
+                newText[i] = newText[i][0].toUpperCase() + newText[i].substring(1).toLowerCase();
             }
-              
-          }
+            else{
+                newText[i] = newText[i].toUpperCase();
+            }
+        }
+        let sentence = newText.join(". ");
+        setText(sentence);
+
+    }
+
+    // convert in pascal
+    const handlePascal = () =>{
+        let newText = text.split(" ");
+        for(let i = 0; i < newText.length; i++){
+            if(newText[i].length>1){
+                newText[i] = newText[i][0].toUpperCase() + newText[i].substring(1).toLowerCase();
+            }
+            else{
+                newText[i] = newText[i].toUpperCase();
+            }
+        }
+        let pascal = newText.join(" ");
+        setText(pascal);
+    }
+
+    // convert in camelCase
+    const handleCamel = () =>{
+        let newText = text.split(" ");
+        for (let i = 0; i < newText.length; i++) {
+            if (newText[i].length > 1) {
+                newText[i] = newText[i][0].toLowerCase() + newText[i][1].toUpperCase() + newText[i].substring(2).toLowerCase();
+            } else {
+                newText[i] = newText[i].toLowerCase();
+            }
+        }
+        let camel = newText.join(" ");
+        setText(camel)
+    }
+
+    // convert to snake_case
+    const handle_Snake = () =>{
+          let newText = text.split(" ");
+          let snake = newText.join("_");
+          setText(snake);
+    }
+
+    // Snake to normal
+    const handle_normal = () =>{
+        let newText = text.split("_");
+        let snake = newText.join(" ");
+        setText(snake);
+  }
+
+    // convert to kebab-case
+//     const handlekebab = () =>{
+//         let newText = text.split(" ");
+//         let camel = text.split("_")
+//         let kebab = camel.join("-");
+//         let kebab2 = newText.join("-");
+//         setText(kebab);
+//   }
+         
   return (
     <>
-    <div className='container-fluid p-4' style={mode}>
-        <div className="pb-3">
-        <button onClick={toggleStyle} style={mode} className="btn btn-dark mb-3">{btnText}</button>
+    <div className='container' style= {{color : props.mode === 'dark' ? 'white' : 'black'}}>
             <h3>{props.heading}</h3>
-            <textarea className="form-control" style={mode} value= {text} onChange = {handleOnChange} id="myBox" rows="5"></textarea>
+        <div className="pb-3">
+            <textarea className="form-control" style= {{backgroundColor : props.mode === 'dark' ? 'rgb(33 37 50)' : 'white', color : props.mode === 'dark' ? 'white' : 'black'}} value= {text} onChange = {handleOnChange} id="myBox" rows="5"></textarea>
         </div>
-        <button className="btn btn-primary" style={mode} onClick={handleUpClick} onChange={handleOnChange}>Convert to UpperCase</button>
-        <button className="btn btn-primary ms-2" style={mode} onClick={handleLowClick} onChange={handleOnChange}>Convert to LowerCase</button>
-        <button className="btn btn-primary ms-2" style={mode} onClick={handleLocLowClick} onChange={handleOnChange}>Convert to LowerCase</button>
-        <button className="btn btn-danger ms-2" style={mode} onClick={handleClearClick} onChange={handleOnChange}>Clear</button>
+        <button className="btn btn-primary" onClick={handleUpClick} onChange={handleOnChange}>UPPER CASE</button>
+        <button className="btn btn-primary ms-2" onClick={handleLowClick} onChange={handleOnChange}>lower case</button>
+        <button className="btn btn-primary ms-2" onClick={handleFirstLetter} onChange={handleOnChange}>Sentence</button>
+        <button className="btn btn-primary ms-2" onClick={handlePascal} onChange={handleOnChange}>Pascal</button>
+        <button className="btn btn-primary ms-2" onClick={handleCamel} onChange={handleOnChange}>camelCase</button>
+        <button className="btn btn-primary ms-2" onClick={handle_Snake} onChange={handleOnChange}>Snake_case</button>
+        <button className="btn btn-primary ms-2" onClick={handle_normal} onChange={handleOnChange}>SnakeNormal</button>
+        <button className="btn btn-primary ms-2" onClick={handleSpaces} onChange={handleOnChange}>RemoveExtraSpaces</button>
+        <button className="btn btn-primary ms-2" onClick={handleCopy} onChange={handleOnChange}>CopyText</button>
+        <button className="btn btn-danger ms-2" onClick={handleClearClick} onChange={handleOnChange}>Clear</button>
     </div>
     <div className="container mt-3">
         <h3>Your Text Summary</h3>
-        <p>{text.split(" ").length} Words and {text.length} Characters</p>
+        <p>{text.split(" ").length} Words and {text.length} Characters and {text.split(". ").length} sentences</p>
         <p>{0.008 * text.split(" ").length} Minutes Read</p>
         <h3>Preview</h3>
-        <p>{text}</p>
+        <p>{text.length>0?text:"Enter Something in text box to preview it here"}</p>
     </div>
     </>
   )
