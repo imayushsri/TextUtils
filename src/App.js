@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
+import About from './components/About';
 function App() {
   const [name, setName] = useState('Enable Dark Mode')
   const [mode, setMode] = useState('light');
@@ -11,12 +12,14 @@ function App() {
       document.body.style.backgroundColor = 'rgb(33 37 50)';
       document.body.style.color = 'white'
       setName('Disable Dark Mode')
+      document.title = 'TextUtils - Dark'
     }
     else{
       setMode('light')
       document.body.style.backgroundColor = 'white';
       document.body.style.color = 'black'
       setName('Enable Dark Mode')
+      document.title = 'TextUtils - Home'
     }
   }
   return (
@@ -26,6 +29,7 @@ function App() {
 <div className="container my-3">
 <TextForm heading = "Enter The Text To Analyze : "  mode={mode}/>
 </div>
+<About/>
 </div>
     </>
   );
