@@ -10,17 +10,20 @@ export default function TextForm(props) {
         // console.log("UpperCase was clicked "+text);
         let newText = text.toUpperCase();
         setText(newText);
+        props.showAlert("CONVERTED TO UPPER CASE", "success");
     }
 
     // lower case
     const handleLowClick = () =>{
         let newText = text.toLowerCase();
         setText(newText);
+        props.showAlert("converted to lower case", "success");
     }
 
     // clear
     const handleClearClick = () =>{
         setText("");
+        props.showAlert("Text Cleared", "warning");
     }
 
     // copy text
@@ -28,13 +31,14 @@ export default function TextForm(props) {
         let newText = document.getElementById("myBox");
         newText.select();
         navigator.clipboard.writeText(newText.value)
-        alert("Text Copied")
+        props.showAlert("Copied to clipboard!", "success");
     }
 
     // remove extra spaces
     const handleSpaces = () => {
         let newText = text.split(/[ ]+/);
         setText(newText.join(" "))
+        props.showAlert("Removed Extra Spaces", "success");
     }
       
     // convert first letter in upper case of sentences
@@ -50,7 +54,7 @@ export default function TextForm(props) {
         }
         let sentence = newText.join(". ");
         setText(sentence);
-
+        props.showAlert("Converted as sentence", "success");
     }
 
     // convert in pascal
@@ -66,6 +70,7 @@ export default function TextForm(props) {
         }
         let pascal = newText.join(" ");
         setText(pascal);
+        props.showAlert("Converted As Pascal", "success");
     }
 
     // convert in camelCase
@@ -80,6 +85,7 @@ export default function TextForm(props) {
         }
         let camel = newText.join(" ");
         setText(camel)
+        props.showAlert("Converted as Camel", "success");
     }
 
     // convert to snake_case
@@ -87,6 +93,7 @@ export default function TextForm(props) {
           let newText = text.split(" ");
           let snake = newText.join("_");
           setText(snake);
+          props.showAlert("Converted_as_snake", "success");
     }
 
     // Snake to normal
@@ -94,6 +101,7 @@ export default function TextForm(props) {
         let newText = text.split("_");
         let snake = newText.join(" ");
         setText(snake);
+        props.showAlert("Converted as normal", "success");
   }
 
     // convert to kebab-case
