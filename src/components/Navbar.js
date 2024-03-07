@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 // import {Link} from 'react-router-dom';
 export default function Navbar(props) {
+  const [visible, invisible] = useState(true);
+  const handleStartClick = () =>{
+    invisible(false);
+  } 
   return (
     <nav className={`width- navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
   <div className="container">
@@ -19,7 +23,11 @@ export default function Navbar(props) {
           <Link className="nav-link" to="/about">{props.aboutText}</Link>
         </li>
         <li>
-        <Link to="/"><button className="btn btn-primary ms-5">Click To Start App</button></Link>
+        <Link to="/">{visible && (
+                <button className="btn btn-primary ms-5 start" onClick={handleStartClick}>
+                  Click To Start App
+                </button>
+              )}</Link>
         </li>
       </ul>
 
