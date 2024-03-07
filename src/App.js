@@ -7,7 +7,7 @@ import Alert from './components/Alert';
 // import { Switch, Route } from 'react-router-dom';
 // import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 // import { BrowserRouter as Switch } from 'react-router-dom';
-//import { BrowserRouter as Router , Route, Routes} from 'react-router-dom';
+import { BrowserRouter as Router , Route, Routes} from 'react-router-dom';
 function App() {
   const [name, setName] = useState('Enable Dark Mode')
   const [mode, setMode] = useState('light');
@@ -41,20 +41,17 @@ function App() {
   }
   return (
     <>
-    //<Router>
+    <Router>
 <div className="container-fluid">
 <Navbar title="TextUtils" aboutText="About Us"  mode={mode} toggleMode={toggleMode} name={name}/>
 <Alert alert={alert}/>
 <div className="container my-3">
-        //<Routes>
-          //<Route path="/" element={
-    <TextForm showAlert={showAlert} heading = "Enter The Text To Analyze : "  mode={mode}/>
-    //}/>
+        <Routes>
+          <Route path="/" element={
+    <TextForm showAlert={showAlert} heading = "Enter The Text To Analyze : "  mode={mode}/>}/>
               
-          //<Route path="/about" element={
-    <About/>
-    //}/>
-        //</Routes>
+          <Route path="/about" element={<About/>}/>
+        </Routes>
 </div>
 </div>
      //</Router>
