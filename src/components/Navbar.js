@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import {Link} from 'react-router-dom';
+// import {Link} from 'react-router-dom';
 export default function Navbar(props) {
   return (
     <nav className={`width- navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
   <div className="container">
-    <Link className="navbar-brand" href="/">{props.title}</Link>
+    <Link className="navbar-brand" to="/">{props.title}</Link>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>
@@ -16,7 +16,7 @@ export default function Navbar(props) {
           <Link className="nav-link active" aria-current="page" to="/">Home</Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" href="/about">{props.aboutText}</Link>
+          <Link className="nav-link" to="/about">{props.aboutText}</Link>
         </li>
       </ul>
       <div className={`form-check form-switch me-3 text-${props.mode === 'light'? 'dark' : 'light'}`}>
