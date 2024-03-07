@@ -120,16 +120,16 @@ export default function TextForm(props) {
         <div className="pb-3">
             <textarea className="form-control" style= {{backgroundColor : props.mode === 'dark' ? 'rgb(33 37 50)' : 'white', color : props.mode === 'dark' ? 'white' : 'black'}} value= {text} onChange = {handleOnChange} id="myBox" rows="5"></textarea>
         </div>
-        <button className="btn btn-primary" onClick={handleUpClick} onChange={handleOnChange}>UPPER CASE</button>
-        <button className="btn btn-primary ms-2" onClick={handleLowClick} onChange={handleOnChange}>lower case</button>
-        <button className="btn btn-primary ms-2" onClick={handleFirstLetter} onChange={handleOnChange}>Sentence</button>
-        <button className="btn btn-primary ms-2" onClick={handlePascal} onChange={handleOnChange}>Pascal</button>
-        <button className="btn btn-primary ms-2" onClick={handleCamel} onChange={handleOnChange}>camelCase</button>
-        <button className="btn btn-primary ms-2" onClick={handle_Snake} onChange={handleOnChange}>Snake_case</button>
-        <button className="btn btn-primary ms-2" onClick={handle_normal} onChange={handleOnChange}>SnakeNormal</button>
-        <button className="btn btn-primary ms-2" onClick={handleSpaces} onChange={handleOnChange}>RemoveExtraSpaces</button>
-        <button className="btn btn-primary ms-2" onClick={handleCopy} onChange={handleOnChange}>CopyText</button>
-        <button className="btn btn-danger ms-2" onClick={handleClearClick} onChange={handleOnChange}>Clear</button>
+        <button className="btn btn-primary me-2" onClick={handleUpClick} onChange={handleOnChange}>UPPER CASE</button>
+        <button className="btn btn-primary me-2 my-1" onClick={handleLowClick} onChange={handleOnChange}>lower case</button>
+        <button className="btn btn-primary me-2 my-1" onClick={handleFirstLetter} onChange={handleOnChange}>Sentence</button>
+        <button className="btn btn-primary me-2 my-1" onClick={handlePascal} onChange={handleOnChange}>Pascal</button>
+        <button className="btn btn-primary me-2 my-1" onClick={handleCamel} onChange={handleOnChange}>camelCase</button>
+        <button className="btn btn-primary me-2 my-1" onClick={handle_Snake} onChange={handleOnChange}>Snake_case</button>
+        <button className="btn btn-primary me-2 my-1" onClick={handle_normal} onChange={handleOnChange}>SnakeNormal</button>
+        <button className="btn btn-primary me-2 my-1" onClick={handleSpaces} onChange={handleOnChange}>RemoveExtraSpaces</button>
+        <button className="btn btn-primary me-2 my-1" onClick={handleCopy} onChange={handleOnChange}>CopyText</button>
+        <button className="btn btn-danger me-2 my-1" onClick={handleClearClick} onChange={handleOnChange}>Clear</button>
     </div>
     <div className="container mt-3">
         <h3>Your Text Summary</h3>
