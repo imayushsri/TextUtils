@@ -9,7 +9,7 @@ import Alert from './components/Alert';
 // import { BrowserRouter as Switch } from 'react-router-dom';
 import { BrowserRouter as Router , Route, Routes} from 'react-router-dom';
 function App() {
-  const [name, setName] = useState('Enable Dark Mode')
+  const [name, setName] = useState('Enable Dark Mode');
   const [mode, setMode] = useState('light');
   const [alert, setAlert] = useState(null);
   const showAlert = (message,typo) =>{
@@ -48,7 +48,7 @@ function App() {
 <div className="container my-3">
         <Routes>
           <Route path="/" element={<TextForm showAlert={showAlert} heading = "Enter The Text To Analyze : "  mode={mode}/>}/>    
-          <Route path="/about" element={<About/>}/>
+          <Route path="/about" element={<About mode={mode}/>}/>
         </Routes>
 </div>
 </div>
