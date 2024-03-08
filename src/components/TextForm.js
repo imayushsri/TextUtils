@@ -148,7 +148,7 @@ const handleClick = () => {
         <p>{text.split(" ").filter((element) =>{return element.length !== 0}).length} Words and {text.length} Characters and {text.split(". ").filter((element) =>{return element.length !== 0}).length} sentences</p>
         <p>{0.008 * text.split(" ").filter((element) =>{return element.length !== 0}).length} Minutes Read</p>
         <h3>Preview</h3>
-        <p>{text.length>0?text:"Enter Something in text box to preview it here"}</p>
+        <p>{text.length>0?text:"Nothing to preview!"}</p>
     </div>
     </>
   )
