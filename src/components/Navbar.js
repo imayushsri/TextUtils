@@ -11,6 +11,11 @@ export default function Navbar(props) {
     <nav className={`width- navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
   <div className="container">
     <Link className="navbar-brand" to="/">{props.title}</Link>
+    <Link to="/">{visible && (
+                <button className="btn btn-primary mx-3 start" onClick={handleStartClick}>
+                  Click To Start App
+                </button>
+              )}</Link>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>
@@ -22,13 +27,7 @@ export default function Navbar(props) {
         <li className="nav-item">
           <Link className="nav-link" to="/about">{props.aboutText}</Link>
         </li>
-        <li>
-        <Link to="/">{visible && (
-                <button className="btn btn-primary ms-5 start" onClick={handleStartClick}>
-                  Click To Start App
-                </button>
-              )}</Link>
-        </li>
+       
       </ul>
 
       <div className={`form-check form-switch me-3 text-${props.mode === 'light'? 'dark' : 'light'}`}>
