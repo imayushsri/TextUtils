@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function About(props) {
   return (
-    <div className="container mt-5">
+    <div className="container">
     <h1 className="text-center mb-4">About TextUtils</h1>
 
     <div className="row">

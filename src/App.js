@@ -27,7 +27,7 @@ function App() {
       document.body.style.backgroundColor = 'rgb(33 37 50)';
       document.body.style.color = 'white';
       setName('Disable Dark Mode');
-      document.title = 'TextUtils - Dark';
+      // document.title = 'TextUtils - Dark';
       showAlert("Dark Mode Enabled", "success");
     }
     else{
@@ -35,10 +35,11 @@ function App() {
       document.body.style.backgroundColor = 'white';
       document.body.style.color = 'black'
       setName('Enable Dark Mode')
-      document.title = 'TextUtils - Home'
+      // document.title = 'TextUtils - Home'
       showAlert("Light Mode Enabled", "success");
     }
   }
+  
   return (
     <>
     <Router>
@@ -47,7 +48,7 @@ function App() {
 <Alert alert={alert}/>
 <div className="container my-3">
         <Routes>
-          <Route path="/" element={<TextForm showAlert={showAlert} heading = "Enter The Text To Analyze : "  mode={mode}/>}/>    
+          <Route path="/" element={<TextForm showAlert={showAlert} heading = "Try TextUtils - Word Counter, Character Counter, Remover Extra Spaces"  mode={mode}/>}/>    
           <Route path="/about" element={<About mode={mode}/>}/>
         </Routes>
 </div>
